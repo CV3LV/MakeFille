@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>VESHKA™ — Premium Essentials | FW26 “White Noise”</title>
+<meta name="description" content="Veshka — a monochrome system of premium essentials. Honest fabrics, precise cuts, limited runs. Prices in EUR.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 8.5V7a2.5 2.5 0 1 0-2.5-2.5' fill='none' stroke='%230a0a0a' stroke-width='1.6'/><path d='M12 8.5 21.5 16H2.5Z' fill='none' stroke='%230a0a0a' stroke-width='1.6' stroke-linejoin='round'/></svg>">
+<!-- Hero preloads: WebP preferred, PNG fallback -->
+<link rel="preload" as="image" href="Images/Mrk1.webp" imagesrcset="Images/Mrk1.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="Images/Mrk1.png" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#ffffff;
+  --ink:#0a0a0a;
+  --muted:#6f6f6e;
+  --line:#e7e7e4;
+  --soft:#f4f4f2;
+  --ease:cubic-bezier(.22,.61,.21,1);
+  --sat:env(safe-area-inset-top,0px);
+  --sab:env(safe-area-inset-bottom,0px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px;overflow-x:clip}
+body{
+  font-family:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background:var(--paper);color:var(--ink);
+  font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  -webkit-tap-highlight-color:transparent;
+  overflow-x:clip;
+  text-size-adjust:100%;
+}
+::selection{background:var(--ink);color:#fff}
+img,picture{display:block;max-width:100%}
+picture{height:100%;width:100%}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+a,button{touch-action:manipulation}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1520px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+section{scroll-margin-top:90px}
+
+/* ---------- type utils ---------- */
+.overline{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.overline::before{content:"";width:28px;height:1px;background:var(--ink)}
+.overline.light{color:#cfcfcd}
+.overline.light::before{background:#fff}
+.sec-title{font-size:clamp(34px,5vw,64px);font-weight:800;letter-spacing:-.02em;line-height:.95;text-transform:uppercase}
+.fig-cap{margin-top:12px;display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stripes{width:64px;height:36px;background:repeating-linear-gradient(135deg,var(--ink) 0 3px,transparent 3px 12px)}
+
+/* ---------- buttons / links ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--ink);color:#fff;border:1px solid var(--ink);padding:16px 30px;min-height:48px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;transition:background .3s,color .3s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.invert{background:#fff;color:var(--ink);border-color:#fff}
+.btn.invert:hover{background:transparent;color:#fff}
+.u-link{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:opacity .3s}
+.u-link:hover{opacity:.55}
+
+/* ---------- topbar / header ---------- */
+.topbar{background:var(--ink);color:#fff;text-align:center;padding:calc(9px + var(--sat)) 16px 9px;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid transparent;transition:border-color .3s}
+header.scrolled{border-color:var(--line)}
+.head-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:70px}
+.hleft{display:flex;align-items:center;gap:28px;justify-self:start}
+.main-nav{display:flex;gap:26px}
+.main-nav a,.act{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);text-decoration:none;background:none;border:0;padding:10px 0}
+.main-nav a:hover,.act:hover{opacity:.55}
+.logo{font-size:21px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;display:flex;align-items:baseline;gap:2px}
+.logo .tm{font-size:10px;font-weight:600}
+.hright{display:flex;align-items:center;gap:22px;justify-self:end}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:0;padding:12px 10px;margin-left:-10px}
+.burger span{width:22px;height:2px;background:var(--ink);transition:transform .35s var(--ease)}
+body.menu-open .burger span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+.js-cart{display:inline-block}
+.js-cart.bump{animation:bump .4s var(--ease)}
+@keyframes bump{40%{transform:scale(1.45)}}
+
+/* ---------- mobile menu ---------- */
+.menu{position:fixed;inset:0;z-index:70;background:#fff;transform:translateY(-102%);transition:transform .6s var(--ease);display:flex;flex-direction:column;justify-content:center;overflow-y:auto;padding:calc(96px + var(--sat)) clamp(24px,8vw,96px) calc(40px + var(--sab))}
+body.menu-open{overflow:hidden}
+body.menu-open .menu{transform:none}
+.menu a.big{display:flex;align-items:baseline;gap:16px;padding:10px 0;min-height:48px;font-size:clamp(28px,7vw,54px);font-weight:800;line-height:1.2;text-transform:uppercase;letter-spacing:-.02em;text-decoration:none;transition:transform .3s var(--ease)}
+.menu a.big:hover{transform:translateX(10px)}
+.menu a.big i{font-style:normal;font-size:11px;letter-spacing:.2em;color:var(--muted)}
+.menu-meta{margin-top:auto;padding-top:32px;display:flex;gap:24px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.menu-meta a{text-decoration:none;color:var(--ink);padding:8px 0}
+
+.tabbar{display:none}
+
+/* ---------- toast ---------- */
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);z-index:90;background:var(--ink);color:#fff;padding:13px 20px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis;opacity:0;pointer-events:none;transition:opacity .35s var(--ease),transform .35s var(--ease)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(40px,7vh,90px) 0 clamp(52px,8vh,100px);position:relative}
+.hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,80px);align-items:center;position:relative}
+.hero-side{position:absolute;top:50%;right:-14px;transform:translateY(-50%);writing-mode:vertical-rl;font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted)}
+.hero h1{margin:24px 0 26px;font-size:clamp(52px,8.6vw,124px);font-weight:800;line-height:.88;letter-spacing:-.035em;text-transform:uppercase}
+.hero p{max-width:46ch;color:var(--muted);font-size:15px}
+.hero-cta{display:flex;align-items:center;gap:28px;margin-top:36px;flex-wrap:wrap}
+.hero-meta{display:flex;align-items:center;gap:18px;margin-top:48px}
+.hero-meta span{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.hero-fig{position:relative}
+.hero-fig .ph-frame{aspect-ratio:4/5;overflow:hidden;background:var(--soft)}
+.hero-fig img{width:100%;height:100%;object-fit:cover}
+.hero-badge{position:absolute;top:16px;left:16px;background:#fff;padding:12px 14px;display:flex;flex-direction:column;gap:9px;font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+
+/* ---------- marquee (RUNNING LINE) ---------- */
+.marquee{background:var(--ink);color:#fff;overflow:hidden;padding:15px 0}
+.marquee-track{
+  display:flex;
+  width:max-content;
+  will-change:transform;
+  animation-name:vsh-marquee;
+  animation-duration:30s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+}
+.marquee-group{display:flex;align-items:center;gap:44px;padding-right:44px;white-space:nowrap;font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase}
+.marquee-group .sep{opacity:.45}
+@keyframes vsh-marquee{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ---------- sections ---------- */
+.sec{padding:clamp(64px,9vw,128px) 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,5vw,64px)}
+.sec-head .overline{margin-bottom:16px}
+
+/* categories */
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.cat{text-decoration:none;display:block}
+.cat-ph{aspect-ratio:3/4;overflow:hidden;background:var(--soft)}
+.cat-ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.cat:hover .cat-ph img{transform:scale(1.06)}
+.cat-bar{display:flex;align-items:center;gap:16px;border-top:1px solid var(--ink);margin-top:14px;padding-top:14px}
+.cat-bar h3{font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.cat-bar small{font-size:10px;letter-spacing:.18em;color:var(--muted)}
+.cat-bar .arr{margin-left:auto;font-size:18px;transition:transform .3s var(--ease)}
+.cat:hover .arr{transform:translateX(6px)}
+
+/* products */
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:52px 16px}
+.card .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--soft)}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.card:hover .ph img{transform:scale(1.05)}
+.tag{position:absolute;top:10px;left:10px;background:#fff;border:1px solid var(--line);padding:5px 9px;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.quick{position:absolute;left:0;right:0;bottom:0;border:0;background:var(--ink);color:#fff;padding:15px 8px;min-height:44px;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;transform:translateY(101%);transition:transform .35s var(--ease)}
+.card:hover .quick,.card:focus-within .quick{transform:none}
+.card.soldout .ph img{filter:grayscale(1);opacity:.5}
+.card.soldout .quick{background:#8a8a88;transform:none}
+.card-info{margin-top:14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.card-info h3{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.card-info .price{font-size:12px;letter-spacing:.06em;color:var(--muted)}
+
+/* banner */
+.banner{position:relative;min-height:72vh;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden}
+.banner>picture{position:absolute;inset:0;width:100%;height:100%}
+.banner img{width:100%;height:100%;object-fit:cover}
+.banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 40%,rgba(0,0,0,.5))}
+.banner-text{position:relative;color:#fff;padding-bottom:clamp(40px,6vw,84px)}
+.banner-text .overline{margin-bottom:18px}
+.banner-text h2{font-size:clamp(44px,7vw,96px);font-weight:800;line-height:.9;letter-spacing:-.03em;text-transform:uppercase;margin-bottom:30px}
+
+/* lookbook split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,84px);align-items:center}
+.split-ph img{aspect-ratio:4/5;width:100%;object-fit:cover}
+.split-txt .overline{margin-bottom:16px}
+.split-txt p{color:var(--muted);max-width:52ch;margin-top:20px}
+.split-txt ul{list-style:none;margin:28px 0 32px;border-top:1px solid var(--ink)}
+.split-txt li{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid var(--line);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.split-txt li i{font-style:normal;color:var(--muted)}
+
+/* services */
+.services{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.svc{background:var(--paper);padding:40px 30px}
+.svc svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.svc h4{margin:18px 0 8px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.svc p{font-size:13px;color:var(--muted)}
+
+/* about */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,84px);align-items:center}
+.about .overline{margin-bottom:16px}
+.about p{color:var(--muted);margin-top:20px;max-width:56ch}
+.stats{display:grid;grid-template-columns:1fr 1fr;margin-top:40px;border-top:1px solid var(--ink)}
+.stat{padding:20px 8px 20px 0;border-bottom:1px solid var(--line)}
+.stat b{display:block;font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-.02em}
+.stat span{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase}
+.about-ph img{aspect-ratio:4/5;width:100%;object-fit:cover}
+
+/* newsletter */
+.news{background:var(--soft)}
+.news .inner{max-width:680px;margin:0 auto;text-align:center}
+.news .overline{justify-content:center}
+.news .overline::before{display:none}
+.news p.sub{color:var(--muted);margin-top:18px}
+.news form{display:flex;gap:0;margin:36px auto 0;max-width:560px;border-bottom:1px solid var(--ink)}
+.news input{flex:1;min-width:0;background:none;border:0;padding:16px 4px;font:500 12px "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;outline:none}
+.news small{display:block;margin-top:16px;font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.news-done{padding:20px 0;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+
+/* footer */
+footer{padding-top:clamp(52px,7vw,96px)}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:clamp(44px,6vw,80px)}
+.foot-brand p{color:var(--muted);margin:16px 0 24px;max-width:32ch}
+.socials{display:flex;gap:20px;flex-wrap:wrap}
+.socials a{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:6px 0}
+.socials a:hover{opacity:.55}
+.foot-grid h5{font-size:10px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;margin-bottom:18px}
+.foot-grid ul{list-style:none}
+.foot-grid ul a{font-size:13px;color:var(--muted);text-decoration:none;line-height:2.1}
+.foot-grid ul a:hover{color:var(--ink);text-decoration:underline}
+.foot-word{font-size:clamp(64px,16.5vw,264px);line-height:.82;font-weight:800;letter-spacing:-.03em;text-transform:uppercase;text-align:center;color:var(--soft);user-select:none;white-space:nowrap}
+.foot-legal{display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between;padding:26px clamp(16px,4vw,48px) calc(26px + var(--sab));border-top:1px solid var(--line);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.foot-legal a{color:inherit;text-decoration:none}
+.foot-legal a:hover{color:var(--ink)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.stagger>.reveal:nth-child(2){transition-delay:.1s}
+.stagger>.reveal:nth-child(3){transition-delay:.2s}
+.stagger>.reveal:nth-child(4){transition-delay:.3s}
+
+/* ---------- responsive ---------- */
+@media(max-width:1200px){.hero-side{display:none}}
+@media(max-width:1024px){
+  .products{grid-template-columns:repeat(2,1fr)}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .cats{grid-template-columns:1fr}
+  .cat-ph{aspect-ratio:16/10}
+}
+@media(max-width:960px){
+  html{scroll-padding-top:74px}
+  section{scroll-margin-top:74px}
+  .head-in{height:60px}
+  .hero-in,.split,.about{grid-template-columns:1fr}
+  .main-nav,.search-link{display:none}
+  .burger{display:flex}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+  .news input{font-size:16px}
+  .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr 1fr;background:#fff;border-top:1px solid var(--line);padding-bottom:var(--sab)}
+  .tabbar a,.tabbar button{display:flex;align-items:center;justify-content:center;min-height:52px;padding:14px 4px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--ink);background:none;border:0}
+  .tabbar a:active,.tabbar button:active{background:var(--soft)}
+  .foot-legal{padding-bottom:calc(78px + var(--sab))}
+  #toast{bottom:calc(70px + var(--sab))}
+}
+@media(max-width:640px){
+  .topbar{font-size:9px;letter-spacing:.16em}
+  .hero h1{font-size:clamp(44px,13.5vw,72px)}
+  .hero-cta{gap:14px}
+  .hero-cta .btn{width:100%}
+  .hero-badge{top:10px;left:10px;padding:9px 10px}
+  .hero-badge .stripes{width:44px;height:24px}
+  .sec-title{font-size:clamp(30px,8.4vw,40px)}
+  .banner{min-height:58vh;min-height:58svh}
+  .banner-text h2{font-size:clamp(38px,11vw,64px)}
+  .products{gap:36px 10px}
+  .card-info h3{font-size:11px}
+  .card-info .price{font-size:11px}
+  .svc{padding:30px 20px}
+  .news form{flex-direction:column;border:0}
+  .news input{border-bottom:1px solid var(--ink);text-align:center;padding:14px 4px}
+  .stats{margin-top:32px}
+}
+@media(max-width:400px){
+  .wrap{padding:0 14px}
+  .products{gap:28px 8px}
+  .cat-bar h3{font-size:14px}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media(hover:none){
+  .quick{transform:none;background:rgba(10,10,10,.92)}
+  .card.soldout .quick{background:rgba(138,138,136,.92)}
+  .cat:hover .cat-ph img,.card:hover .ph img{transform:none}
+}
+/* reduced motion: НЕ трогаем бегущую строку — отключаем только плавные появления */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+</head>
+<body id="top">
+
+<div class="topbar">Complimentary shipping on orders over €150 · Free 30-day returns</div>
+
+<header id="header">
+  <div class="wrap head-in">
+    <div class="hleft">
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#new-in">New In</a>
+        <a href="#categories">Women</a>
+        <a href="#categories">Men</a>
+        <a href="#categories">Accessories</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+    <a class="logo" href="#top" aria-label="Veshka home">VESHKA<span class="tm">™</span></a>
+    <div class="hright">
+      <button class="act search-link">Search</button>
+      <button class="act js-bag">Bag (&nbsp;<span class="js-cart">0</span>&nbsp;)</button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <a class="big" href="#new-in"><i>01</i>New In</a>
+  <a class="big" href="#categories"><i>02</i>Women</a>
+  <a class="big" href="#categories"><i>03</i>Men</a>
+  <a class="big" href="#categories"><i>04</i>Accessories</a>
+  <a class="big" href="#lookbook"><i>05</i>Lookbook</a>
+  <a class="big" href="#about"><i>06</i>About</a>
+  <div class="menu-meta">
+    <a href="#">Instagram ↗</a><a href="#">TikTok ↗</a><a href="#">X ↗</a>
+  </div>
+</div>
+
+<nav class="tabbar" aria-label="Mobile">
+  <a href="#new-in">New In</a>
+  <a href="#categories">Shop</a>
+  <button class="js-bag">Bag (<span class="js-cart">0</span>)</button>
+</nav>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <span class="hero-side">FW26 — Drop 01 — The White Room</span>
+    <div class="reveal in">
+      <p class="overline">Fall / Winter 2026 — Drop 01</p>
+      <h1>Less,<br>but “Better”.</h1>
+      <p>A monochrome system of premium essentials. Honest fabrics, precise cuts and limited runs — designed in Europe, made to outlast the season.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#new-in">Shop New In</a>
+        <a class="u-link" href="#lookbook">View Lookbook</a>
+      </div>
+      <div class="hero-meta">
+        <div class="stripes" aria-hidden="true"></div>
+        <span>N°01 — “The White Room”</span>
+      </div>
+    </div>
+    <figure class="hero-fig reveal in">
+      <div class="ph-frame">
+        <picture>
+          <source type="image/webp" srcset="Images/Mrk1.webp">
+          <img src="Images/Mrk1.png" alt="FW26 campaign — model in structured white overcoat on white studio background" fetchpriority="high" decoding="async" width="1200" height="1500">
+        </picture>
+      </div>
+      <div class="hero-badge"><div class="stripes"></div>FW26 — Drop 01</div>
+      <figcaption class="fig-cap"><span>Look 01 — Structured Wool Overcoat</span><span>€890</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="marquee-group">
+      <span>Veshka™</span><span class="sep">•</span>
+      <span>Premium Essentials</span><span class="sep">•</span>
+      <span>FW26 “White Noise” — Out Now</span><span class="sep">•</span>
+      <span>Free EU Shipping Over €150</span><span class="sep">•</span>
+      <span>New Drop Every Friday — 10:00 CET</span><span class="sep">•</span>
+    </div>
+    <div class="marquee-group">
+      <span>Veshka™</span><span class="sep">•</span>
+      <span>Premium Essentials</span><span class="sep">•</span>
+      <span>FW26 “White Noise” — Out Now</span><span class="sep">•</span>
+      <span>Free EU Shipping Over €150</span><span class="sep">•</span>
+      <span>New Drop Every Friday — 10:00 CET</span><span class="sep">•</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CATEGORIES ============ -->
+<section class="sec" id="categories">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="overline">Sec. 01 — Categories</p>
+        <h2 class="sec-title">Shop by “Category”</h2>
+      </div>
+      <a class="u-link" href="#new-in">All Pieces →</a>
+    </div>
+    <div class="cats stagger">
+      <a class="cat reveal" href="#new-in">
+        <div class="cat-ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk2.webp">
+            <img src="Images/Mrk2.png" alt="Women — minimalist monochrome look" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="cat-bar"><h3>“Women”</h3><small>86 PIECES</small><span class="arr">→</span></div>
+      </a>
+      <a class="cat reveal" href="#new-in">
+        <div class="cat-ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk3.webp">
+            <img src="Images/Mrk3.png" alt="Men — black tailored coat on white background" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="cat-bar"><h3>“Men”</h3><small>74 PIECES</small><span class="arr">→</span></div>
+      </a>
+      <a class="cat reveal" href="#new-in">
+        <div class="cat-ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk4.webp">
+            <img src="Images/Mrk4.png" alt="Accessories — cap, tote and small goods on white" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="cat-bar"><h3>“Accessories”</h3><small>32 PIECES</small><span class="arr">→</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEW IN ============ -->
+<section class="sec" id="new-in" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="overline">Sec. 02 — FW26 Drop 01</p>
+        <h2 class="sec-title">“New” Arrivals</h2>
+      </div>
+      <a class="u-link" href="#categories">View All →</a>
+    </div>
+
+    <div class="products stagger">
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk5.webp">
+            <img src="Images/Mrk5.png" alt="Oversized Logo Tee — white" loading="lazy" decoding="async">
+          </picture>
+          <span class="tag">New</span><button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>STAR-PANEL OVERSIZED SHIRT</h3><p class="price">€145</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk6.webp">
+            <img src="Images/Mrk6.png" alt="Structured Wool Overcoat — black" loading="lazy" decoding="async">
+          </picture>
+          <span class="tag">New</span><button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>CONTRAST-STITCH RACING SHIRT</h3><p class="price">€890</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk7.webp">
+            <img src="Images/Mrk7.png" alt="Raw-Hem Denim Jacket" loading="lazy" decoding="async">
+          </picture>
+          <button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>COLORBLOCK SHIRT</h3><p class="price">€425</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk8.webp">
+            <img src="Images/Mrk8.png" alt="Heavyweight Hoodie “Cloud” — grey" loading="lazy" decoding="async">
+          </picture>
+          <span class="tag">Bestseller</span><button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>Heavyweight Hoodie “Cloud”</h3><p class="price">€295</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk9.webp">
+            <img src="Images/Mrk9.png" alt="Wide-Leg Tailored Trousers — black" loading="lazy" decoding="async">
+          </picture>
+          <button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>Wide-Leg Tailored Trousers</h3><p class="price">€365</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk10.webp">
+            <img src="Images/Mrk10.png" alt="Minimal Poplin Shirt — white" loading="lazy" decoding="async">
+          </picture>
+          <span class="tag">New</span><button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>Minimal Poplin Shirt</h3><p class="price">€245</p></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk11.webp">
+            <img src="Images/Mrk11.png" alt="Canvas Tote “Veshka” — white" loading="lazy" decoding="async">
+          </picture>
+          <button class="quick" type="button">Quick Add +</button>
+        </div>
+        <div class="card-info"><h3>Canvas Tote “Veshka”</h3><p class="price">€185</p></div>
+      </article>
+      <article class="card soldout reveal">
+        <div class="ph">
+          <picture>
+            <source type="image/webp" srcset="Images/Mrk12.webp">
+            <img src="Images/Mrk12.png" alt="Logo Cap “V” — black, sold out" loading="lazy" decoding="async">
+          </picture>
+          <span class="tag">Sold Out</span><button class="quick" type="button">Notify Me</button>
+        </div>
+        <div class="card-info"><h3>Logo Cap “V”</h3><p class="price">€125</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMPAIGN BANNER ============ -->
+<section class="banner reveal" id="campaign">
+  <picture>
+    <source type="image/webp" srcset="Images/Mrk13.webp">
+    <img src="Images/Mrk13.png" alt="FW26 campaign — two models in monochrome studio" loading="lazy" decoding="async">
+  </picture>
+  <div class="banner-overlay"></div>
+  <div class="wrap banner-text">
+    <p class="overline light">FW26 Campaign</p>
+    <h2>“White” Noise</h2>
+    <a class="btn invert" href="#new-in">Shop the Drop</a>
+  </div>
+</section>
+
+<!-- ============ LOOKBOOK ============ -->
+<section class="sec" id="lookbook">
+  <div class="wrap split">
+    <figure class="split-ph reveal">
+      <picture>
+        <source type="image/webp" srcset="Images/Mrk14.webp">
+        <img src="Images/Mrk14.png" alt="Lookbook detail — heavyweight fabric study" loading="lazy" decoding="async">
+      </picture>
+      <figcaption class="fig-cap"><span>Look 07 — Heavyweight Hoodie “Cloud”</span><span>€295</span></figcaption>
+    </figure>
+    <div class="split-txt reveal">
+      <p class="overline">Sec. 04 — Lookbook</p>
+      <h2 class="sec-title">Mono“chrome” Study</h2>
+      <p>One palette, zero noise. The FW26 lookbook studies proportion in pure white and absolute black — raw edges against clean lines, heavyweight cloth against empty space.</p>
+      <ul>
+        <li><i>01</i>Tonal Layering</li>
+        <li><i>02</i>Raw Edges, Clean Lines</li>
+        <li><i>03</i>One Palette, No Noise</li>
+      </ul>
+      <a class="u-link" href="#campaign">View Full Lookbook →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services">
+  <div class="svc-grid">
+    <div class="svc reveal">
+      <svg viewBox="0 0 24 24"><path d="M1 5h13v11H1zM14 9h4l4 4v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+      <h4>Complimentary Shipping</h4>
+      <p>Free EU delivery on orders over €150. Worldwide express in 48 hours.</p>
+    </div>
+    <div class="svc reveal">
+      <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      <h4>Secure Checkout</h4>
+      <p>Cards, PayPal, Apple Pay. 256-bit encrypted, always.</p>
+    </div>
+    <div class="svc reveal">
+      <svg viewBox="0 0 24 24"><path d="M3 8h12a5 5 0 0 1 0 10H8"/><path d="M7 4 3 8l4 4"/></svg>
+      <h4>30-Day Returns</h4>
+      <p>Changed your mind? Free returns, no questions, full refund.</p>
+    </div>
+    <div class="svc reveal">
+      <svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+      <h4>Traceable Fabrics</h4>
+      <p>Organic cotton and undyed wool from certified European mills.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec" id="about">
+  <div class="wrap about">
+    <div class="reveal">
+      <p class="overline">Sec. 05 — About</p>
+      <h2 class="sec-title">Built to “Last”</h2>
+      <p>Veshka started in 2021 with a single rail of twelve white tees and one rule: nothing disposable. Every drop is cut in limited runs from traceable European mills — organic cotton, undyed wool, recycled canvas — and finished by hand in our atelier.</p>
+      <p>No shouting logos. No seasonal landfill. Just a monochrome system of pieces that layer, match and last.</p>
+      <div class="stats">
+        <div class="stat"><b>2021</b><span>Established</span></div>
+        <div class="stat"><b>24</b><span>Pieces per drop</span></div>
+        <div class="stat"><b>100%</b><span>Traceable fabrics</span></div>
+        <div class="stat"><b>30</b><span>Day easy returns</span></div>
+      </div>
+    </div>
+    <figure class="reveal">
+      <picture>
+        <source type="image/webp" srcset="Images/Mrk15.webp">
+        <img class="about-ph" src="Images/Mrk15.png" alt="The Veshka atelier — fabric rolls and sewing in monochrome" loading="lazy" decoding="async">
+      </picture>
+      <figcaption class="fig-cap"><span>The Atelier</span><span>Berlin — Tbilisi</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<section class="news sec" id="newsletter">
+  <div class="wrap inner reveal">
+    <p class="overline">Sec. 06 — Newsletter</p>
+    <h2 class="sec-title">Join the “Inner” Circle</h2>
+    <p class="sub">Early access to drops, private sales, no noise.</p>
+    <form id="newsForm" novalidate>
+      <input type="email" required placeholder="YOUR@EMAIL.COM" aria-label="Email address">
+      <button class="btn" type="submit">Join →</button>
+    </form>
+    <small>No spam. One email per drop. Unsubscribe anytime.</small>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <a class="logo" href="#top">VESHKA<span class="tm">™</span></a>
+      <p>Premium essentials in monochrome. Designed in Europe, worn everywhere.</p>
+      <div class="socials">
+        <a href="#">Instagram ↗</a><a href="#">TikTok ↗</a><a href="#">X ↗</a>
+      </div>
+    </div>
+    <div>
+      <h5>Shop</h5>
+      <ul><li><a href="#new-in">New In</a></li><li><a href="#categories">Women</a></li><li><a href="#categories">Men</a></li><li><a href="#categories">Accessories</a></li><li><a href="#">Gift Cards</a></li></ul>
+    </div>
+    <div>
+      <h5>Company</h5>
+      <ul><li><a href="#about">About</a></li><li><a href="#">Journal</a></li><li><a href="#">Stores</a></li><li><a href="#">Careers</a></li><li><a href="#">Sustainability</a></li></ul>
+    </div>
+    <div>
+      <h5>Support</h5>
+      <ul><li><a href="#">Shipping &amp; Returns</a></li><li><a href="#">Size Guide</a></li><li><a href="#">Order Tracking</a></li><li><a href="#">Contact</a></li><li><a href="#">FAQ</a></li></ul>
+    </div>
+  </div>
+  <div class="foot-word" aria-hidden="true">VESHKA™</div>
+  <div class="foot-legal">
+    <span>© <span id="y">2026</span> Veshka™ — All rights reserved</span>
+    <span><a href="#">Terms</a> · <a href="#">Privacy</a> · <a href="#">Cookies</a></span>
+  </div>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+
+const hd=$('#header');
+addEventListener('scroll',()=>hd.classList.toggle('scrolled',scrollY>10),{passive:true});
+
+const burger=$('#burger');
+burger.addEventListener('click',()=>{
+  const open=document.body.classList.toggle('menu-open');
+  burger.setAttribute('aria-expanded',open);
+});
+$$('.menu a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false');}));
+addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('menu-open');});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+
+const toast=document.createElement('div');
+toast.id='toast';toast.setAttribute('aria-live','polite');
+document.body.appendChild(toast);
+let tT;
+function showToast(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(()=>toast.classList.remove('show'),2200);}
+
+let cart=0;
+function syncCart(){$$('.js-cart').forEach(s=>{s.textContent=cart;s.classList.remove('bump');void s.offsetWidth;s.classList.add('bump');});}
+$$('.quick').forEach(b=>b.addEventListener('click',()=>{
+  const card=b.closest('.card');
+  if(card.classList.contains('soldout')){b.textContent='Noted — we\u2019ll email you';b.disabled=true;showToast('Sold out — we\u2019ll email you');return;}
+  cart++;syncCart();
+  showToast('Added — '+card.querySelector('h3').textContent);
+}));
+$$('.js-bag').forEach(b=>b.addEventListener('click',()=>{
+  showToast(cart===0?'Your bag is empty':('Your bag — '+cart+' item'+(cart===1?'':'s')));
+}));
+
+$('#newsForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const input=e.target.querySelector('input');
+  if(!input.value||!input.checkValidity()){input.focus();return;}
+  e.target.outerHTML='<p class="news-done">\u201CWELCOME\u201D — YOU\u2019RE ON THE LIST.</p>';
+  showToast('Subscribed — welcome to the inner circle');
+});
+
+$('#y').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Veshka — Premium Clothing</title>
+
+    <!-- Google Fonts: clean, sharp sans-serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ----- reset & base ----- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #ffffff;
+            --off-white: #f8f7f4;
+            --light-gray: #f0efeb;
+            --border-light: #e5e4e0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #555555;
+            --text-muted: #888888;
+            --accent: #000000;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition: 0.25s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--white);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ----- utility ----- */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ----- header / nav ----- */
+        .site-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(4px);
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .logo span {
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1.5px;
+            background: var(--text-primary);
+            transition: width var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-actions a {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .header-actions a:hover {
+            color: var(--text-primary);
+        }
+
+        .header-actions .cart {
+            position: relative;
+        }
+
+        .header-actions .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--text-primary);
+            color: var(--white);
+            font-size: 0.6rem;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* ----- hero ----- */
+        .hero {
+            padding: 4rem 0 5rem;
+            background: var(--off-white);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero-content .overline {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .hero-content h1 strong {
+            font-weight: 600;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--text-primary);
+            color: var(--white);
+            padding: 0.9rem 2.8rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .btn-primary:hover {
+            background: #2a2a2a;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 0.9rem 2.8rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid var(--text-primary);
+            border-radius: 0;
+            cursor: pointer;
+            transition: background var(--transition), color var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-primary);
+            color: var(--white);
+        }
+
+        /* ----- featured categories (simple strip) ----- */
+        .categories-strip {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--white);
+        }
+
+        .categories-strip .strip-inner {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .categories-strip a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .categories-strip a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ----- product grid ----- */
+        .products-section {
+            padding: 4rem 0 5rem;
+            background: var(--white);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2.5rem 1.8rem;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-image {
+            aspect-ratio: 3 / 4;
+            background: var(--off-white);
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.02);
+        }
+
+        .product-image .quick-add {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 0.75rem;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity var(--transition), transform var(--transition);
+            cursor: pointer;
+            border: none;
+            backdrop-filter: blur(4px);
+        }
+
+        .product-card:hover .quick-add {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .product-brand {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+
+        .product-price {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        /* ----- editorial / about ----- */
+        .editorial-section {
+            padding: 4rem 0;
+            background: var(--off-white);
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .editorial-image {
+            aspect-ratio: 4 / 5;
+            background: var(--light-gray);
+            overflow: hidden;
+        }
+
+        .editorial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .editorial-text h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 1.25rem;
+        }
+
+        .editorial-text h2 strong {
+            font-weight: 600;
+        }
+
+        .editorial-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 440px;
+        }
+
+        /* ----- footer ----- */
+        .site-footer {
+            padding: 3.5rem 0 2.5rem;
+            background: var(--white);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            max-width: 260px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-col ul a {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .footer-col ul a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-light);
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom .socials {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom .socials a {
+            color: var(--text-muted);
+            transition: color var(--transition);
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .footer-bottom .socials a:hover {
+            color: var(--text-primary);
+        }
+
+        /* ----- responsive ----- */
+        @media (max-width: 900px) {
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .editorial-text p {
+                max-width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                padding: 1.5rem 0 0.5rem;
+                border-top: 1px solid var(--border-light);
+                margin-top: 0.5rem;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .header-inner {
+                flex-wrap: wrap;
+            }
+
+            .header-actions {
+                margin-left: auto;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .product-name {
+                font-size: 0.85rem;
+            }
+
+            .product-price {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">Veshka<span>.</span></a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">New</a></li>
+                <li><a href="#">Men</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Journal</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <a href="#">Search</a>
+                <a href="#" class="cart">
+                    Cart
+                    <span class="cart-badge">0</span>
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container hero-content">
+            <p class="overline">Spring–Summer 2026</p>
+            <h1>Where <strong>minimalism</strong><br />meets craft.</h1>
+            <p>Essential pieces, refined silhouettes — built to last beyond the season.</p>
+            <a href="#" class="btn-primary">Explore the collection</a>
+        </div>
+    </section>
+
+    <!-- ===== CATEGORIES STRIP ===== -->
+    <div class="categories-strip">
+        <div class="container strip-inner">
+            <a href="#">Outerwear</a>
+            <a href="#">Knitwear</a>
+            <a href="#">Shirting</a>
+            <a href="#">Trousers</a>
+            <a href="#">Footwear</a>
+            <a href="#">Bags</a>
+        </div>
+    </div>
+
+    <!-- ===== PRODUCT GRID (12 items) ===== -->
+    <section class="products-section">
+        <div class="container">
+            <p class="section-subtitle">Editor's pick</p>
+            <h2 class="section-title">New arrivals</h2>
+
+            <div class="products-grid">
+                <!-- 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk1.webp" alt="Oversized wool coat" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Oversized wool coat</span>
+                        <span class="product-price">€ 485</span>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk2.webp" alt="Relaxed-fit trousers" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Relaxed-fit trousers</span>
+                        <span class="product-price">€ 290</span>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk3.webp" alt="Silk-blend shirt" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Silk-blend shirt</span>
+                        <span class="product-price">€ 350</span>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk4.webp" alt="Leather tote bag" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Leather tote bag</span>
+                        <span class="product-price">€ 620</span>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk5.webp" alt="Knitted polo sweater" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Knitted polo sweater</span>
+                        <span class="product-price">€ 395</span>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk6.webp" alt="Wool-blend blazer" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Wool-blend blazer</span>
+                        <span class="product-price">€ 540</span>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk8.webp" alt="Cropped knit jacket" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Cropped knit jacket</span>
+                        <span class="product-price">€ 420</span>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk9.webp" alt="Wide-leg jeans" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Wide-leg jeans</span>
+                        <span class="product-price">€ 270</span>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk10.webp" alt="Cotton poplin shirt" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Cotton poplin shirt</span>
+                        <span class="product-price">€ 310</span>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk11.webp" alt="Leather crossbody bag" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Leather crossbody bag</span>
+                        <span class="product-price">€ 560</span>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk12.webp" alt="Wool scarf" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Wool scarf</span>
+                        <span class="product-price">€ 180</span>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="Images/Mrk13.webp" alt="Linen-blend trousers" />
+                        <button class="quick-add">Quick add</button>
+                    </div>
+                    <div class="product-info">
+                        <span class="product-brand">Veshka</span>
+                        <!-- ★ ИЗМЕНИ НАЗВАНИЕ ЗДЕСЬ -->
+                        <span class="product-name">Linen-blend trousers</span>
+                        <span class="product-price">€ 330</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EDITORIAL / ABOUT ===== -->
+    <section class="editorial-section">
+        <div class="container editorial-grid">
+            <div class="editorial-image">
+                <img src="Images/Mrk7.webp" alt="Veshka editorial" />
+            </div>
+            <div class="editorial-text">
+                <p class="section-subtitle">About Veshka</p>
+                <h2>Clothing for the <strong>conscious</strong> few.</h2>
+                <p>
+                    Every piece is considered — from the fabric selection to the final stitch.
+                    We believe in slow fashion, timeless design, and clothing that earns its place
+                    in your wardrobe.
+                </p>
+                <a href="#" class="btn-secondary">Our story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Veshka<span>.</span></a>
+                    <p>Minimalist clothing for the modern wardrobe. Based in Stockholm.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">New arrivals</a></li>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Info</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Care guide</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Shipping &amp; returns</a></li>
+                        <li><a href="#">Size guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 Veshka. All rights reserved.</span>
+                <div class="socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== JS ===== -->
+    <script>
+        // Mobile nav toggle
+        const toggleBtn = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close nav on link click (optional)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Simple cart badge update (demo)
+        const quickAddBtns = document.querySelectorAll('.quick-add');
+        const cartBadge = document.querySelector('.cart-badge');
+        let cartCount = 0;
+
+        quickAddBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                cartCount += 1;
+                cartBadge.textContent = cartCount;
+
+                // subtle feedback
+                btn.textContent = 'Added ✓';
+                setTimeout(() => {
+                    btn.textContent = 'Quick add';
+                }, 1200);
+            });
+        });
+
+        // List of all required .webp images (13 total)
+        console.log('📸 Placeholder images needed (WebP):');
+        console.log('Mrk1.webp  — Oversized wool coat');
+        console.log('Mrk2.webp  — Relaxed-fit trousers');
+        console.log('Mrk3.webp  — Silk-blend shirt');
+        console.log('Mrk4.webp  — Leather tote bag');
+        console.log('Mrk5.webp  — Knitted polo sweater');
+        console.log('Mrk6.webp  — Wool-blend blazer');
+        console.log('Mrk7.webp  — Editorial / about image');
+        console.log('Mrk8.webp  — Cropped knit jacket');
+        console.log('Mrk9.webp  — Wide-leg jeans');
+        console.log('Mrk10.webp — Cotton poplin shirt');
+        console.log('Mrk11.webp — Leather crossbody bag');
+        console.log('Mrk12.webp — Wool scarf');
+        console.log('Mrk13.webp — Linen-blend trousers');
+    </script>
+</body>
+</html>
